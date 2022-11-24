@@ -8,6 +8,5 @@
 - [Home](README.md)
 - UCAS Course
     - [并发](ucas_course/并发数据结构和多核编程.md)
-    - test
 - 杂
     - [英文缩写-含义对照](notes/english_abbreviations.md)

@@ -2,7 +2,7 @@
  * @Author: starrysky9959 starrysky9651@outlook.com
  * @Date: 2022-11-17 13:40:18
  * @LastEditors: starrysky9959 starrysky9651@outlook.com
- * @LastEditTime: 2022-11-17 14:37:55
+ * @LastEditTime: 2022-11-25 00:05:39
  * @Description:  
 -->
 <!DOCTYPE html>
@@ -10,11 +10,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>StarrySky's World</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+    <!-- support dark mode -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css" />
 </head>
 
 <body>
@@ -44,6 +46,33 @@
                 hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
             },
             onlyCover: true, // only load coverpage when browse the homepage
+            themeColor: "#42b983",// this is the default 'vue' color
+
+            // config word count extension
+            // click https://github.com/827652549/docsify-count for more information
+            count: {
+                countable: true,
+                position: 'top',
+                margin: '10px',
+                float: 'top',
+                fontsize: '0.9em',
+                color: 'rgb(90,90,90)',
+                language: 'chinese',
+                localization: {
+                    words: "",
+                    minute: ""
+                },
+                isExpected: true
+            },
+            darkMode: {
+                // config dark mode extension
+                dark: {
+                    background: "#1c2022",//"121212",
+                    toggleBtnBg: "#34495e",
+                    textColor: "#ffffff"
+                },
+            }
+
         }
     </script>
 
@@ -66,6 +95,10 @@
     <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
     <!-- support search -->
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <!-- support show last updated time -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-updated/src/time-updater.min.js"></script>
+    <!-- support dark mode -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script>
 </body>
 
 </html>
