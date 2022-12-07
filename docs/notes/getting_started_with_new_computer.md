@@ -2,7 +2,7 @@
  * @Author: starrysky9959 starrysky9651@outlook.com
  * @Date: 2022-12-06 23:10:01
  * @LastEditors: starrysky9959 starrysky9651@outlook.com
- * @LastEditTime: 2022-12-07 13:28:38
+ * @LastEditTime: 2022-12-07 15:24:46
  * @Description:  
 -->
 # 配置新电脑
@@ -106,3 +106,12 @@ Homepage: [https://code.visualstudio.com/](https://code.visualstudio.com/)
 - 跨平台, 而且由于微软的服务没有墙, 无需代理即可体验多端同步.
 
 Homepage: [https://www.microsoft.com/zh-cn/edge](https://www.microsoft.com/zh-cn/edge)
+
+### drawio
+
+画图工具
+
+- free software with open source. 
+- 跨平台, 支持Web
+Web: [https://app.diagrams.net/](https://app.diagrams.net/)
+Desktop: [https://github.com/jgraph/drawio-desktop](https://github.com/jgraph/drawio-desktop)
