@@ -28,14 +28,8 @@
             coverpage: true, // use _coverpage.md as homepage by default
             routerMode: 'history', // I don't want to show #. 'default: 'hash'
             repo: 'https://github.com/starrysky9959/starrysky9959.github.io', // config repository url
-            count: { // config word count extension
-                countable: true,
-                fontsize: '0.9em',
-                color: 'rgb(90,90,90)',
-                language: 'chinese'
-            },
             loadSidebar: true, // enable sidebar. use _sidebar.md by default
-
+            autoHeader: true, // auto add header according to _siderbar.md
             // config search extension
             search: {
                 maxAge: 86400000, // 过期时间，单位毫秒，默认一天
@@ -47,7 +41,6 @@
                 hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
             },
             onlyCover: true, // only load coverpage when browse the homepage
-            themeColor: "#42b983",// this is the default 'vue' color
 
             // config word count extension
             // click https://github.com/827652549/docsify-count for more information
@@ -65,8 +58,10 @@
                 },
                 isExpected: true
             },
+
+            // config dark mode extension
             darkMode: {
-                // config dark mode extension
+
                 dark: {
                     background: "#1c2022",//"121212",
                     toggleBtnBg: "#34495e",

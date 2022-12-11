@@ -1,0 +1,115 @@
+% author: Starrysky
+% last update date: 2022-10-09
+% description: 以 UTF-8 编码保存, 使用 XeLaTeX 编译
+
+% 使用CTex宏集以支持中文
+\documentclass[UTF8]{ctexart}
+% 从此处到正文开始前是导言区, 进行文档全局设置
+% 设置页面大小和页边距
+\usepackage[a4paper, margin=1in, bottom=0.5in]{geometry}
+% 支持数学公式
+\usepackage{amsmath}
+% 支持超链接
+\usepackage{hyperref}
+% 支持图片
+\usepackage{graphicx}
+% 设置图片文件目录
+\graphicspath{{./resources}}
+% 支持伪代码
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% 替换为Input和Output
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\title{A Latex Template}
+\author{Starrysky}
+\date{\today}
+% 正文部分
+\begin{document}
+
+% 显示导言区设置的title、author、date等信息
+\maketitle
+% 显示目录，目录要编译两次
+\tableofcontents
+% 分页
+\newpage
+
+% 多级section、paragraph的排版
+\section{Section Title}
+todo
+\subsection{Subsection Title}
+todo
+\subsubsection{Subsubsection Title}
+todo
+\paragraph{Paragraph Title}
+todo
+\subparagraph{Subparagraph Title}
+todo
+\subsection{Subsection Title}
+todo
+\paragraph{Paragraph Title}
+todo
+\section{公式}
+首先，$a+b=c$是一个行内公式。下面看一个行间公式:
+\[
+    a^2+b^2=c^2
+\]
+
+
+对公式进行编号
+\begin{equation}
+    a^2+b^2=c^2
+\end{equation}
+
+
+更复杂的公式，可以辅以这个工具：\href{https://www.latexlive.com/}{https://www.latexlive.com/}
+
+
+\section{图片}
+如图\ref{fig:1}所示.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .8\textwidth]{./cat.jpg}
+    \caption{cat figure}
+    \label{fig:1}
+\end{figure}
+
+\section{表格}
+% l、c、r控制对齐方式
+\begin{tabular}{|l|c|r|}
+
+    \hline
+    操作系统       & 发行版      & 编辑器       \\
+    \hline
+    Windows    & MikTeX   & TexMakerX \\
+    \hline
+    Unix/Linux & teTeX    & Kile      \\
+    \hline
+    Mac OS     & MacTeX   & TeXShop   \\
+    \hline
+    通用         & TeX Live & TeXworks  \\
+    \hline
+\end{tabular}
+
+\section{伪代码}
+\begin{algorithm}[H]    
+    \caption{find $n^{th}$ smallest  value from 2n values in two separate databases}
+    \label{algo:1}
+    \textbf{function}  \textbf{FindMidianValue}($DB_a,DB_b,k,head_a,head_b$) 
+    \begin{algorithmic}[1]
+        \IF{$k == 1$}
+            \RETURN $min(query(DB_a, head_a), query(DB_b, head_b))$
+        \ENDIF
+        \STATE $k_a \gets \lfloor \frac{k}{2} \rfloor $
+        \STATE $k_b \gets k - a $
+        \STATE $v_a\gets query(DB_a, head_a+k_a-1)$
+        \STATE $v_b\gets query(DB_b, head_b+k_b-1)$
+        \IF{$v_a<v_b$}
+            \RETURN \textbf{FindMidianValue}($DB_a,DB_b,k-k_a,head_a+k_a,head_b$)
+        \ELSE
+            \RETURN \textbf{FindMidianValue}($DB_a,DB_b,k-k_b,head_a,head_b+k_b$)
+        \ENDIF
+    \end{algorithmic}
+\end{algorithm}
+\end{document}
