@@ -1,5 +1,5 @@
 ## vector 向量数据
-向量数据是由多个数值组成的序列, 可以表示一个数据量的大小和方向. 通过Embedding技术, 图像、声音、文本都可以被表达为一个高维的向量, 比如一张图片可以转换为一个由像素值构成的向量. 其特点有:
+向量数据是由多个数值组成的序列, 可以表示一个数据量的大小和方向. 通过Embedding技术, 图像, 声音, 文本都可以被表达为一个高维的向量, 比如一张图片可以转换为一个由像素值构成的向量. 其特点有:
 - 高维: 向量数据通常有很多元素, 维度很高.
 - 稀疏: 向量数据中很多元素的值可能为零或接近零. 
 - 异构: 向量数据中的元素可能有不同的类型或含义. 
@@ -48,10 +48,10 @@
 - 解决方法: 利用专用硬件来加速向量运算, 这些硬件包括GPU, FPGA, AI芯片等, 用于提供更高的浮点运算能力和并行处理能力. 
 
 ### 3. 大规模数据, 分布式系统架构
-- 针对问题: 向量数据规模庞大, 单机无法满足存储、计算需求. 
+- 针对问题: 向量数据规模庞大, 单机无法满足存储, 计算需求. 
 - 解决方法: 使用分布式系统, 这面临与其他类型数据库使用分布式架构类似的挑战.
 
-### 其他挑战
+### 4. 其他挑战
 参考自[11 known issues of vector-based database used for AI prompting](https://medium.com/@don-lim/known-issues-of-vector-based-database-for-ai-ae44a2b0198c), 谈得比较笼统, 选取其中相对有价值的论点.
 
 1. vector database主要为处理高维vector数据设计进行优化, 不适合非vector format格式的数据, 如categorical variables(枚举类型) or missing values.
@@ -61,7 +61,7 @@
 5. 数据稀疏, vector中大量元素为0导致计算的低效.
 
 ## 主流的向量数据库
-结合[DB-Engines](https://db-engines.com/en/ranking/vector+dbms)的榜单和[OpenAI docs](https://platform.openai.com/docs/guides/embeddings/how-can-i-retrieve-k-nearest-embedding-vectors-quickly)推荐的产品,
+结合[DB-Engines](https://db-engines.com/en/ranking/vector+dbms)的榜单和[OpenAI docs](https://platform.openai.com/docs/guides/embeddings/how-can-i-retrieve-k-nearest-embedding-vectors-quickly)推荐的产品, 主要调研以下5款.
 - Chroma, an open-source embeddings store
 - Pinecone, a fully managed vector database
 - Milvus, a vector database built for scalable similarity search
@@ -157,7 +157,7 @@ https://weaviate.io/
 https://qdrant.tech/
 
 - 开源, 云原生分布式架构, 同时有全托管版本
-- 支持向量检索与元数据过滤. 支持多种数据类型和查询条件, 包括字符串匹配、数值范围、地理位置等.
+- 支持向量检索与元数据过滤. 支持多种数据类型和查询条件, 包括字符串匹配, 数值范围, 地理位置等.
 - 近似算法采用自定义HNSW
 
 ![Qdrant 架构](https://raw.githubusercontent.com/ramonpzg/mlops-sydney-2023/main/images/qdrant_overview_high_level.png)
@@ -166,7 +166,7 @@ https://qdrant.tech/
 对于vector database的第三方中立benchmark似乎很少, 也没有涵盖这5款主流的产品, 找到一个[Qdrant做的benchmark](https://qdrant.tech/benchmarks/), 仅供参考.
 
 ## 结论
-vector database的核心挑战围绕vector数据类型本身所固有的问题————高维、稀疏/稠密、计算密集, 检索的性能是最关键的考量, 除了Chroma直接利用第三方库外, 其他产品都会对现有近似搜索算法进行优化, 来作为一个卖点. 还有提高检索接口的定制化程度, 从基本的向量检索, 到支持各种形式的元数据过滤, 甚至Weaviate加入了LLM改善查询结果. 而在距离度量和数据类型上的支持, 则是越丰富越好. 
+vector database的核心挑战围绕vector数据类型本身所固有的问题————高维, 稀疏/稠密, 计算密集, 检索的性能是最关键的考量, 除了Chroma直接利用第三方库外, 其他产品都会对现有近似搜索算法进行优化, 来作为一个卖点. 还有提高检索接口的定制化程度, 从基本的向量检索, 到支持各种形式的元数据过滤, 甚至Weaviate加入了LLM改善查询结果. 而在距离度量和数据类型上的支持, 则是越丰富越好. 
 
 从产品形态上看, Chroma与其他主流vector database区别较为明显, 正如OpenAI对它的定义"embeddings store", 很难称得上是一个完备的数据库, 相关文档也比较有限, 但足够轻量级, 适合简单的项目尝试.
 
