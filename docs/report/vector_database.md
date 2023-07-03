@@ -1,11 +1,11 @@
-# vector 向量数据
+## vector 向量数据
 向量数据是由多个数值组成的序列, 可以表示一个数据量的大小和方向. 通过Embedding技术, 图像、声音、文本都可以被表达为一个高维的向量, 比如一张图片可以转换为一个由像素值构成的向量. 其特点有:
 - 高维: 向量数据通常有很多元素, 维度很高.
 - 稀疏: 向量数据中很多元素的值可能为零或接近零. 
 - 异构: 向量数据中的元素可能有不同的类型或含义. 
 - 动态: 向量数据可能随着时间或环境变化而变化. 
 
-# vector database 向量数据库
+## vector database 向量数据库
 向量数据库是一种专门用于存储和查询向量数据的数据库系统. 
 
 向量数据库可能支持的操作, 如: 
@@ -15,8 +15,8 @@
 
 推荐阅读: [AWS-What is vector database](https://aws.amazon.com/what-is/vector-databases/)
 
-# vector database的核心技术/挑战
-## 1. 向量索引技术
+## vector database的核心技术/挑战
+### 1. 向量索引技术
 - 针对问题: 向量数据维度很高, 直接进行全量扫描或者基于树结构的索引会导致效率低下或者内存爆炸. 
 - 解决方法: 采用近似搜索算法来加速向量的检索, 通常利用向量之间的距离或者相似度来检索出与查询向量相近的K个向量.
 - 距离度量
@@ -43,15 +43,15 @@
 
 推荐阅读: https://mdnice.com/writing/ffd73929e77a41868bc848fd67995978
 
-## 2. 硬件加速技术
+### 2. 硬件加速技术
 - 针对问题: 向量数据计算密集, 单纯依靠CPU的计算能力难以满足实时性和并发性的要求. 
 - 解决方法: 利用专用硬件来加速向量运算, 这些硬件包括GPU, FPGA, AI芯片等, 用于提供更高的浮点运算能力和并行处理能力. 
 
-## 3. 大规模数据, 分布式系统架构
+### 3. 大规模数据, 分布式系统架构
 - 针对问题: 向量数据规模庞大, 单机无法满足存储、计算需求. 
 - 解决方法: 使用分布式系统, 这面临与其他类型数据库使用分布式架构类似的挑战.
 
-## 其他挑战
+### 其他挑战
 参考自[11 known issues of vector-based database used for AI prompting](https://medium.com/@don-lim/known-issues-of-vector-based-database-for-ai-ae44a2b0198c), 谈得比较笼统, 选取其中相对有价值的论点.
 
 1. vector database主要为处理高维vector数据设计进行优化, 不适合非vector format格式的数据, 如categorical variables(枚举类型) or missing values.
@@ -60,7 +60,7 @@
 4. 高维vector的索引维护开销高, 尤其是维度增加时
 5. 数据稀疏, vector中大量元素为0导致计算的低效.
 
-# 主流的向量数据库
+## 主流的向量数据库
 结合[DB-Engines](https://db-engines.com/en/ranking/vector+dbms)的榜单和[OpenAI docs](https://platform.openai.com/docs/guides/embeddings/how-can-i-retrieve-k-nearest-embedding-vectors-quickly)推荐的产品,
 - Chroma, an open-source embeddings store
 - Pinecone, a fully managed vector database
@@ -73,7 +73,7 @@
 
 此外, [OpenAI cookbook](https://github.com/openai/openai-cookbook/tree/main/examples/vector_databases)中提供了许多vector database的使用案例.
 
-## Chroma
+### Chroma
 https://www.trychroma.com/
 
 - 开源
@@ -110,7 +110,7 @@ results = collection.query(
 
 ![chroma架构](https://www.trychroma.com/hrm4.svg)
 
-## Pinecone
+### Pinecone
 https://www.pinecone.io/
 
 AutoGpt使用OpenAI API+Pinecone的组合, 因此Pinecone应该是最流行的vector database, 客户众多.
@@ -125,7 +125,7 @@ AutoGpt使用OpenAI API+Pinecone的组合, 因此Pinecone应该是最流行的ve
 
 ![Pinecone架构](https://raw.githubusercontent.com/pinecone-io/img/main/Pinecone%20architecture%20diagram.png)
 
-## Milvus & Zilliz
+### Milvus & Zilliz
 https://milvus.io/
 
 最早发布的向量数据库, 在开源向量数据库产品中社区影响力较大, 用户众多
@@ -142,7 +142,7 @@ https://milvus.io/
 
 ![Milvus 架构](https://milvus.io/static/7a0dfbdf7722f8e63278244f984d353f/52173/architecture_02.jpg)
 
-## Weaviate
+### Weaviate
 https://weaviate.io/
 
 - 开源, 云原生分布式架构, 同时有全托管版本
@@ -153,7 +153,7 @@ https://weaviate.io/
 
 ![weaviate架构](https://weaviate.io/assets/files/weaviate-architecture-overview-54e15328eb9bdfe6695f85443d892f2e.svg)
 
-## Qdrant
+### Qdrant
 https://qdrant.tech/
 
 - 开源, 云原生分布式架构, 同时有全托管版本
@@ -162,10 +162,10 @@ https://qdrant.tech/
 
 ![Qdrant 架构](https://raw.githubusercontent.com/ramonpzg/mlops-sydney-2023/main/images/qdrant_overview_high_level.png)
 
-# Benchmark
+## Benchmark
 对于vector database的第三方中立benchmark似乎很少, 也没有涵盖这5款主流的产品, 找到一个[Qdrant做的benchmark](https://qdrant.tech/benchmarks/), 仅供参考.
 
-# 结论
+## 结论
 vector database的核心挑战围绕vector数据类型本身所固有的问题————高维、稀疏/稠密、计算密集, 检索的性能是最关键的考量, 除了Chroma直接利用第三方库外, 其他产品都会对现有近似搜索算法进行优化, 来作为一个卖点. 还有提高检索接口的定制化程度, 从基本的向量检索, 到支持各种形式的元数据过滤, 甚至Weaviate加入了LLM改善查询结果. 而在距离度量和数据类型上的支持, 则是越丰富越好. 
 
 从产品形态上看, Chroma与其他主流vector database区别较为明显, 正如OpenAI对它的定义"embeddings store", 很难称得上是一个完备的数据库, 相关文档也比较有限, 但足够轻量级, 适合简单的项目尝试.
